@@ -5,9 +5,11 @@
 package DataBase;
 
 /**
- *
- * @author Samuel
+ * @author Gabriel Lima
+ * @author Gabriel Luiz
+ * @author Samuel Ruan
  */
 public class TratamentoBd {
     
+
 }
