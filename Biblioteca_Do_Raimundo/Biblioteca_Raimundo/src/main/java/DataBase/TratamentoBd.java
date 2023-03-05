@@ -24,7 +24,7 @@ public void InsertBd(String nome, String autor,String seccao) {
             Connection con = null;
             try {
                 con = DriverManager.getConnection(
-                        "jdbc:sqlite::bdBiblioteca.bd");
+                        "jdbc:sqlite::db/bdBiblioteca.bd");
             } catch (java.sql.SQLException e1) {
 
                 e1.printStackTrace();
