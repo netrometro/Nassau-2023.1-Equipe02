@@ -100,7 +100,7 @@ public class Livros extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         CadastrarLivros tela = new CadastrarLivros();
         tela.setVisible(true);
-                
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
