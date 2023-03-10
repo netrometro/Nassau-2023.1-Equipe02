@@ -4,6 +4,7 @@
  */
 package View;
 
+import VIEW.DashBoard;
 import java.util.Arrays;
 import javax.swing.*;
 
@@ -38,8 +39,6 @@ public class Login extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("Login");
-
-        jPasswordField1.setText("jPasswordField1");
 
         jButton1.setBackground(new java.awt.Color(105, 105, 105));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -99,8 +98,10 @@ public class Login extends javax.swing.JFrame {
             String senha = Arrays.toString(jPasswordField1.getPassword());
           if(senha.equals("admin")){
              JOptionPane.showInputDialog("login validado");
-                new Login().setVisible(false);
-                new DashBoard().setVisible(true);
+                this.dispose();
+                DashBoard tela = new DashBoard();
+                tela.setVisible(true);
+                
           }
           else 
           {
@@ -133,6 +134,13 @@ public class Login extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
