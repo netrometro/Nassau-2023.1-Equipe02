@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author Gabriel Luiz
  * @author Samuel Ruan
  */
-public class TratamentoBd {
+public class TratamentoBdDAO {
 
 public void InsertBd(String nome, String autor,String seccao) {
 
