@@ -1,12 +1,16 @@
 package VIEW;
 
-public class LivroVIEW extends javax.swing.JFrame {
+import DataBase.TratamentoBdDAO;
 
+public class LivroVIEW extends javax.swing.JFrame {
+    TratamentoBdDAO bd = new TratamentoBdDAO();
     /**
      * Creates new form frmConsultaVIEW
      */
     public LivroVIEW() {
+        
         initComponents();
+        
     }
 
     /**
@@ -237,6 +241,10 @@ public class LivroVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCarregarCamposVIEWActionPerformed
 
     private void btnCadastrarVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarVIEWActionPerformed
+       
+        if(!txtLivroVIEW.getText().trim().isEmpty()&&!txtAutorVIEW.getText().trim().isEmpty()&&!txtSecaoVIEW.getText().trim().isEmpty()){
+        bd.InsertLivroBd( txtLivroVIEW.getText().toString(), txtAutorVIEW.getText().toString(),  txtSecaoVIEW.getText().toString());
+        }
 
     }//GEN-LAST:event_btnCadastrarVIEWActionPerformed
 
