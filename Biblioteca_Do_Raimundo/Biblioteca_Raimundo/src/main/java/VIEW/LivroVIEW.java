@@ -1,4 +1,4 @@
-package VIEW;
+package View;
 
 public class LivroVIEW extends javax.swing.JFrame {
 
