@@ -1,7 +1,10 @@
 package View;
 
+import Database.TratamentoBdDAO;
+
 public class LivroVIEW extends javax.swing.JFrame {
 
+    TratamentoBdDAO database = new TratamentoBdDAO();
     /**
      * Creates new form frmConsultaVIEW
      */
@@ -237,7 +240,12 @@ public class LivroVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCarregarCamposVIEWActionPerformed
 
     private void btnCadastrarVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarVIEWActionPerformed
-
+        String name  = txtLivroVIEW.getText();
+        String autorDoLivro = txtAutorVIEW.getText();
+        String section = txtSecaoVIEW.getText();
+        if(!name.trim().isEmpty()&&!autorDoLivro.trim().isEmpty()&&!section.trim().isEmpty()){
+            database.InsertLivroBd( name, autorDoLivro,  section);
+        }
     }//GEN-LAST:event_btnCadastrarVIEWActionPerformed
 
     private void btnLimparVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparVIEWActionPerformed
@@ -277,6 +285,30 @@ public class LivroVIEW extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LivroVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

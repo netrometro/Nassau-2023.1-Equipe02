@@ -2,13 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DataBase;
+package Database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import java.sql.Statement;
 
 /**
  * @author Gabriel Lima
@@ -17,20 +18,22 @@ import javax.swing.JOptionPane;
  */
 public class TratamentoBdDAO {
 
-public void InsertBd(String nome, String autor,String seccao) {
+public void InsertLivroBd(String nome, String autor,String seccao) {
 
         try {
 
             Connection con = null;
             try {
-                con = DriverManager.getConnection(
-                        "jdbc:sqlite::db/bdBiblioteca.bd");
+                con = DriverManager.getConnection("jdbc:sqlite:db/dbBiblioteca.db");
+                Statement statement = con.createStatement();
+                    statement.execute("CREATE TABLE IF NOT EXISTS tbllivros(nome VARCHAR, autor VARCHAR, seccao VARCHAR)");
+                   
             } catch (java.sql.SQLException e1) {
 
                 e1.printStackTrace();
             }
 
-            String sql = "INSERT INTO tbl_livros(nome,autor,seccao) VALUES(?,?,?)";
+            String sql = "INSERT INTO tbllivros(nome,autor,seccao) VALUES(?,?,?)";
 
             PreparedStatement stmt = con.prepareStatement(sql);
 
