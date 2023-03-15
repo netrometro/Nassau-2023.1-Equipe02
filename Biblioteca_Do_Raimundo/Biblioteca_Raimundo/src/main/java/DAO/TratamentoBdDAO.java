@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author Gabriel Luiz
  * @author Samuel Ruan
  */
-public class TratamentoBdDAO {
+public class TratamentoBdDAO {   //Mudar nome de class para "ConexaoDAO"
 
 public void InsertLivroBd(String nome, String autor,String seccao) {
 
