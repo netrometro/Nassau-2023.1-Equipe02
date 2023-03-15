@@ -21,12 +21,12 @@ public class TratamentoBdDAO {   //Mudar nome de class para "ConexaoDAO"
 public void InsertLivroBd(String nome, String autor,String seccao) {
 
         try {
-            Connection con = null;
+            Connection conn = null;
             try {
-                con = DriverManager.getConnection(
+                conn = DriverManager.getConnection(
                         "jdbc:sqlite:db/dbBiblioteca.db");
                 
-                 Statement statement = con.createStatement();
+                 Statement statement = conn.createStatement();
                 
                 statement.execute("CREATE TABLE IF NOT EXISTS tabelaLivros(nomeL VARCHAR, autorL VARCHAR, secaoL VARCHAR)");
             } catch (java.sql.SQLException e1) {
@@ -36,7 +36,7 @@ public void InsertLivroBd(String nome, String autor,String seccao) {
                
             String sql = "INSERT INTO tabelaLivros(nomeL,autorL,secaoL) VALUES(?,?,?)";
 
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, nome);
             stmt.setString(2,autor);
