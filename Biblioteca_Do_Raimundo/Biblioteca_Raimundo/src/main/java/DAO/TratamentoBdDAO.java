@@ -21,7 +21,6 @@ public class TratamentoBdDAO {
 public void InsertLivroBd(String nome, String autor,String seccao) {
 
         try {
-
             Connection con = null;
             try {
                 con = DriverManager.getConnection(
@@ -34,9 +33,7 @@ public void InsertLivroBd(String nome, String autor,String seccao) {
 
                 e1.printStackTrace();
             }
-            
-            
-
+               
             String sql = "INSERT INTO tbllivros(nome,autor,seccao) VALUES(?,?,?)";
 
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -45,8 +42,6 @@ public void InsertLivroBd(String nome, String autor,String seccao) {
             stmt.setString(2,autor);
             stmt.setString(3,seccao);
             
-            
-
             stmt.execute();
             stmt.close();
 
