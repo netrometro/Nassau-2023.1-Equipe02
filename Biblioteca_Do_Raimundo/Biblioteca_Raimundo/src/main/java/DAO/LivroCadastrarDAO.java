@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
-
+    //Samuel passar para ca codigo de insert
 /**
  *
  * @author gabri

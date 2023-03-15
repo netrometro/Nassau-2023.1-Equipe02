@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
-
+    //Gabriel Luiz passar para ca codigo de Consultar/Visualizar read
 /**
  *
  * @author gabri
