@@ -83,7 +83,6 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String senha =jPasswordField1.getText().toString();
         if(senha.equals("admin")){
-            JOptionPane.showMessageDialog(null,"login validado");
             this.dispose();
             DashBoard tela = new DashBoard();
             tela.setVisible(true);
@@ -120,6 +119,12 @@ public class Login extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
