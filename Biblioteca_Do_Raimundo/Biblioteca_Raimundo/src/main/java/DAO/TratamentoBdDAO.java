@@ -28,13 +28,13 @@ public void InsertLivroBd(String nome, String autor,String seccao) {
                 
                  Statement statement = con.createStatement();
                 
-                statement.execute("CREATE TABLE IF NOT EXISTS tbllivros(nome VARCHAR, autor VARCHAR, seccao VARCHAR)");
+                statement.execute("CREATE TABLE IF NOT EXISTS tabelaLivros(nomeL VARCHAR, autorL VARCHAR, secaoL VARCHAR)");
             } catch (java.sql.SQLException e1) {
 
                 e1.printStackTrace();
             }
                
-            String sql = "INSERT INTO tbllivros(nome,autor,seccao) VALUES(?,?,?)";
+            String sql = "INSERT INTO tabelaLivros(nomeL,autorL,secaoL) VALUES(?,?,?)";
 
             PreparedStatement stmt = con.prepareStatement(sql);
 
