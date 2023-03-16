@@ -1,9 +1,9 @@
 package VIEW;
 
-import DataBase.TratamentoBdDAO;
+import DAO.ConexaoDAO;
 
 public class LivroVIEW extends javax.swing.JFrame {
-    TratamentoBdDAO bd = new TratamentoBdDAO();
+    ConexaoDAO bd = new ConexaoDAO();
     /**
      * Creates new form frmConsultaVIEW
      */
