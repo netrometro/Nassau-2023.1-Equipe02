@@ -23,7 +23,7 @@ public class LivroAlterarDAO {
     public void alterarLivro(LivroDTO objlivroDTO) {
         String sql = "Update tabelaLivros set nomeL =?, autorL =?, secaoL =? where idL =?";
         
-        conn = new TratamentoBdDAO().InsertLivroBd(sql, sql, sql);
+        conn = new ConexaoDAO().Conecta();
         
         try {
             pstm = conn.prepareStatement(sql);

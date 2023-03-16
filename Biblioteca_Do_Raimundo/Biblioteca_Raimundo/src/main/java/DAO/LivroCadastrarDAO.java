@@ -39,8 +39,7 @@ public class LivroCadastrarDAO {
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
             
         } catch (SQLException e) {
-            throw new RuntimeException(e);
-            JOptionPane.showMessageDialog(null, "LivroAlterarDAO: " + e);
+            JOptionPane.showMessageDialog(null, "LivroCadastrarDAO: " + e);
         }
     }
 }
