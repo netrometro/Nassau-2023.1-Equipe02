@@ -7,8 +7,9 @@ package VIEW;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Samuel
+ * @author Gabriel Luiz
+ * @author Gabriel Lima
+ * @author Samuel Ruan
  */
 public class Login extends javax.swing.JFrame {
 
