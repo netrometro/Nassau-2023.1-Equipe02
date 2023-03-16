@@ -5,10 +5,8 @@
 
 package DAO;
 import DTO.LivroDTO;
-import DataBase.TratamentoBdDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -18,12 +16,11 @@ import javax.swing.JOptionPane;
 public class LivroAlterarDAO {
     Connection conn;
     PreparedStatement pstm;
-    ResultSet rs;
     
     public void alterarLivro(LivroDTO objlivroDTO) {
         String sql = "Update tabelaLivros set nomeL =?, autorL =?, secaoL =? where idL =?";
         
-        conn = new ConexaoDAO().Conecta();
+        conn = new ConexaoDAO().ConectaBD();
         
         try {
             pstm = conn.prepareStatement(sql);

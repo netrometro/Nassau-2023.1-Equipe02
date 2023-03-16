@@ -15,7 +15,12 @@ import javax.swing.JOptionPane;
  * @author Gabriel Luiz
  * @author Samuel Ruan
  */
-public class ConexaoDAO {   //Mudar nome de class para "ConexaoDAO"
+public class ConexaoDAO {   
+
+    public static void InsertLivroBd(String toString, String toString0, String toString1) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+//Mudar nome de class para "ConexaoDAO"
 
     public Connection ConectaBD() {
         Connection conn = null;
