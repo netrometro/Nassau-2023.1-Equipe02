@@ -3,10 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
-import DTO.LivroDTO;
+
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,28 +20,36 @@ public class LivroCadastrarDAO {
     Connection conn;
     PreparedStatement pstm;
     
-    public void cadastrarLivro(LivroDTO objlivroDTO) {
-    
-        String sql = "INSERT INTO tabelaLivros(nomeL,autorL,secaoL) VALUES(?,?,?)";
-
-            conn = new ConexaoDAO().ConectaBD();
+    public void InsertLivroBd(String nome, String autor, String seccao) {
+        try {
 
             try {
-                pstm = conn.prepareStatement(sql);
+                conn = DriverManager.getConnection(
+             "jdbc:sqlite:db/dbBiblioteca.db");
                 
-                pstm.setString(1, objlivroDTO.getNome_livro());
-                pstm.setString(2,objlivroDTO.getAutor_livro());
-                pstm.setString(3,objlivroDTO.getSecao_livro());
-                pstm.setInt(4, objlivroDTO.getId_livro());
+                Statement statement = conn.createStatement();
+                
+                statement.execute("CREATE TABLE IF NOT EXISTS tabelaLivros(nomeL VARCHAR, autorL VARCHAR, secaoL VARCHAR)");
+            } catch (SQLException e1) {
+                JOptionPane.showMessageDialog(null, "LivroCadastroDAO. Conexão: " + e1);
+            }
+            String sql = "INSERT INTO tabelaLivros(nomeL,autorL,secaoL) VALUES(?,?,?)";
 
-                pstm.execute();
-                pstm.close();
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setString(1, nome);
+            pstm.setString(2,autor);
+            pstm.setString(3,seccao);
+            
+            pstm.execute();
+            pstm.close();
 
             System.out.println("Gravado!");
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
             
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "LivroCadastrarDAO: " + e);
+            throw new RuntimeException(e);
         }
+
     }
 }

@@ -1,6 +1,7 @@
 package VIEW;
 
 import DAO.ConexaoDAO;
+import DAO.LivroCadastrarDAO;
 
 public class LivroVIEW extends javax.swing.JFrame {
     ConexaoDAO bd = new ConexaoDAO();
@@ -243,7 +244,7 @@ public class LivroVIEW extends javax.swing.JFrame {
     private void btnCadastrarVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarVIEWActionPerformed
        
         if(!txtLivroVIEW.getText().trim().isEmpty()&&!txtAutorVIEW.getText().trim().isEmpty()&&!txtSecaoVIEW.getText().trim().isEmpty()){
-        bd.InsertLivroBd( txtLivroVIEW.getText().toString(), txtAutorVIEW.getText().toString(),  txtSecaoVIEW.getText().toString());
+        ConexaoDAO.InsertLivroBd(txtLivroVIEW.getText(), txtAutorVIEW.getText(),  txtSecaoVIEW.getText());
         }
 
     }//GEN-LAST:event_btnCadastrarVIEWActionPerformed
