@@ -1,6 +1,6 @@
 package View;
 
-import Database.TratamentoBdDAO;
+import DAO.TratamentoBdDAO;
 
 public class LivroVIEW extends javax.swing.JFrame {
 
@@ -248,11 +248,9 @@ public class LivroVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCarregarCamposVIEWActionPerformed
 
     private void btnCadastrarVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarVIEWActionPerformed
-        String name  = txtLivroVIEW.getText();
-        String autorDoLivro = txtAutorVIEW.getText();
-        String section = txtSecaoVIEW.getText();
-        if(!name.trim().isEmpty()&&!autorDoLivro.trim().isEmpty()&&!section.trim().isEmpty()){
-            database.InsertLivroBd( name, autorDoLivro,  section);
+
+        if(!txtLivroVIEW.getText().trim().isEmpty()&&!txtAutorVIEW.getText().trim().isEmpty()&&!txtSecaoVIEW.getText().trim().isEmpty()){
+            database.InsertLivroBd( txtLivroVIEW.getText(), txtAutorVIEW.getText(),  txtSecaoVIEW.getText());
         }
     }//GEN-LAST:event_btnCadastrarVIEWActionPerformed
 

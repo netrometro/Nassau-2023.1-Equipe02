@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Database;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -39,7 +39,7 @@ public void InsertLivroBd(String nome, String autor,String seccao) {
 
             stmt.setString(1, nome);
             stmt.setString(2,autor);
-            stmt.setString(2,seccao);
+            stmt.setString(3,seccao);
             
 
             stmt.execute();
