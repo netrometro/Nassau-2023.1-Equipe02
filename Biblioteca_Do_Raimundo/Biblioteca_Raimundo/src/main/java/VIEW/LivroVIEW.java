@@ -1,4 +1,4 @@
-package View;
+package VIEW;
 
 import DAO.TratamentoBdDAO;
 
