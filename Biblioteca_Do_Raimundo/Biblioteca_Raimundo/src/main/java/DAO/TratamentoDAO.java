@@ -23,7 +23,7 @@ public class TratamentoDAO {
     public void InsertLivroBd(String nome, String autor, String seccao, int quantidade) {
         try {
             
-            String sql = "INSERT INTO tabelaLivros(nomeL,autorL,secaoL,secaoL) VALUES(?,?,?,?)";
+            String sql = "INSERT INTO tabelaLivros(nomeL,autorL,secaoL,quantidadeL) VALUES(?,?,?,?)";
 
             pstm = conn.prepareStatement(sql);
 
@@ -44,7 +44,7 @@ public class TratamentoDAO {
     }
         //METODO DE ALTERAR LIVRO
         public void alterarLivro(LivroDTO objlivroDTO) {
-            String sql = "Update tabelaLivros(nomeL,autorL,secaoL,secaoL) VALUES(?,?,?,?)";
+            String sql = "Update tabelaLivros(nomeL,autorL,secaoL,quantidadeL) VALUES(?,?,?,?)";
 
             conn = new ConexaoDAO().ConectaBD();
 
