@@ -7,8 +7,9 @@ package VIEW;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Samuel
+ * @author Gabriel Luiz
+ * @author Samuel Ruan
+ * @author Gabriel Lima
  */
 public class Login extends javax.swing.JFrame {
 
@@ -83,7 +84,6 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String senha =jPasswordField1.getText().toString();
         if(senha.equals("admin")){
-            JOptionPane.showMessageDialog(null,"login validado");
             this.dispose();
             DashBoard tela = new DashBoard();
             tela.setVisible(true);
