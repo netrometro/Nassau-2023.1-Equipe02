@@ -4,12 +4,9 @@
  */
 package DAO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import javax.swing.JOptionPane;
-import java.sql.Statement;
+import DTO.*;
 
 /**
  * @author Gabriel Lima
@@ -18,24 +15,16 @@ import java.sql.Statement;
  */
 public class TratamentoBdDAO {
 
+    Connection conn;
+    PreparedStatement pstm;
+    
 public void InsertLivroBd(String nome, String autor,String seccao) {
 
-        try {
+            conn = new ConexaoDAO().ConectaBD();
+            try{
+            String sql = "INSERT INTO tabelaLivros(nome,autor,secao) VALUES(?,?,?)";
 
-            Connection con = null;
-            try {
-                con = DriverManager.getConnection("jdbc:sqlite:db/dbBiblioteca.db");
-                Statement statement = con.createStatement();
-                    statement.execute("CREATE TABLE IF NOT EXISTS tbllivros(nome VARCHAR, autor VARCHAR, seccao VARCHAR)");
-                   
-            } catch (java.sql.SQLException e1) {
-
-                e1.printStackTrace();
-            }
-
-            String sql = "INSERT INTO tbllivros(nome,autor,seccao) VALUES(?,?,?)";
-
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, nome);
             stmt.setString(2,autor);
@@ -44,12 +33,30 @@ public void InsertLivroBd(String nome, String autor,String seccao) {
 
             stmt.execute();
             stmt.close();
-
+            }catch(SQLException sqlex){
+                JOptionPane.showMessageDialog(null, "TratamentoBdDAO: " + sqlex);
+            }
             System.out.println("Gravado!");
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    }
+    public void alterarLivro(LivroDTO objlivroDTO) {
+        String sql = "Update tabelaLivros set nome = ?, autor = ?, secao = ? where id = ?";
+        
+        conn = new ConexaoDAO().ConectaBD();
+        
+        try {
+            pstm = conn.prepareStatement(sql);
+            
+            pstm.setString(1, objlivroDTO.getNome_livro()); //1 -> =?
+            pstm.setString(2, objlivroDTO.getAutor_livro()); //2 -> =?
+            pstm.setString(3, objlivroDTO.getSecao_livro()); //3 -> =?
+            
+            pstm.execute();
+            pstm.close();
+            
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "TratamentoBdDAO: " + erro);
         }
-
+        
     }
 }

@@ -17,10 +17,6 @@ import javax.swing.JOptionPane;
  */
 public class ConexaoDAO {   
 
-    public static void InsertLivroBd(String toString, String toString0, String toString1) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     public Connection ConectaBD() {
         Connection conn = null;
         try {
@@ -29,10 +25,11 @@ public class ConexaoDAO {
 
             Statement statement = conn.createStatement();
 
-            statement.execute("CREATE TABLE IF NOT EXISTS tabelaLivros(nomeL VARCHAR, autorL VARCHAR, secaoL VARCHAR)");
+            statement.execute("CREATE TABLE IF NOT EXISTS tabelaLivros(nome VARCHAR, autor VARCHAR, secao VARCHAR)");
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ConexaoDAO: " + e);
         }
         return conn;
     }
+}
