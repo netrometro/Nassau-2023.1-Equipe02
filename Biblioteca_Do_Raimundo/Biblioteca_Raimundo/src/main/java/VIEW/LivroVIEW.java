@@ -314,7 +314,9 @@ public class LivroVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnSairVIEW2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairVIEW2ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        DashBoardVIEW tela = new DashBoardVIEW();
+        tela.setVisible(true);
     }//GEN-LAST:event_btnSairVIEW2ActionPerformed
 
     /**
