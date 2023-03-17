@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jLabel3" alignment="1" pref="0" max="32767" attributes="0"/>
+          <Component id="jLabel3" alignment="1" pref="909" max="32767" attributes="0"/>
           <Component id="jLabel4" max="32767" attributes="0"/>
           <Component id="jLabel5" alignment="1" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
@@ -47,39 +47,39 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtQtdVIEW" min="-2" pref="50" max="-2" attributes="0"/>
+                                      <Component id="txtQuantidadeVIEW" min="-2" pref="50" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="btnCadastrarVIEW" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="txtLivroVIEW" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                       <Component id="btnConsultarVIEW" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                                       <Component id="btnAlterarVIEW" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="txtAutorVIEW" min="-2" pref="200" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="btnExcluirVIEW" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="btnLimparVIEW" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnCarregarCamposVIEW" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnLimparVIEW" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="352" max="32767" attributes="0"/>
@@ -108,7 +108,7 @@
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtQtdVIEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtQuantidadeVIEW" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtLivroVIEW" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -119,7 +119,6 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnConsultarVIEW" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnCarregarCamposVIEW" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCadastrarVIEW" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnLimparVIEW" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnAlterarVIEW" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -178,16 +177,17 @@
         <Component class="javax.swing.JTable" name="tabelaLivroVIEW">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="4">
-                <Column editable="true" title="C&#xd3;DIGO" type="java.lang.Object"/>
-                <Column editable="true" title="LIVRO" type="java.lang.Object"/>
-                <Column editable="true" title="AUTOR" type="java.lang.Object"/>
-                <Column editable="true" title="SEC&#xc3;O" type="java.lang.Object"/>
+              <Table columnCount="5" rowCount="4">
+                <Column editable="false" title="ID" type="java.lang.Object"/>
+                <Column editable="false" title="LIVRO" type="java.lang.Object"/>
+                <Column editable="false" title="AUTOR" type="java.lang.Object"/>
+                <Column editable="false" title="SEC&#xc3;O" type="java.lang.Object"/>
+                <Column editable="false" title="QTD" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="45" minWidth="45" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -203,6 +203,11 @@
                   <Renderer/>
                 </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="60" minWidth="60" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -226,12 +231,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Qtd: "/>
+        <Property name="text" type="java.lang.String" value="Quantidade: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtQtdVIEW">
+    <Component class="javax.swing.JTextField" name="txtQuantidadeVIEW">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtQtdVIEWActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtQuantidadeVIEWActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -254,14 +259,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtSecaoVIEW">
-    </Component>
-    <Component class="javax.swing.JButton" name="btnCarregarCamposVIEW">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="CARREGAR CAMPOS"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarregarCamposVIEWActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCadastrarVIEW">
       <Properties>
