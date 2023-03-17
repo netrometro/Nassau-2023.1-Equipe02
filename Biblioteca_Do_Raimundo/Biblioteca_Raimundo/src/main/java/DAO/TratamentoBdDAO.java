@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class TratamentoBdDAO {
 
-public void InsertLivroBd(String nome, String autor,String seccao) {
+public void InsertLivroBd(String nome, String autor,String seccao,int qtdLivros) {
 
         try {
 
@@ -27,9 +27,7 @@ public void InsertLivroBd(String nome, String autor,String seccao) {
                 con = DriverManager.getConnection(
                         "jdbc:sqlite:db/dbBiblioteca.db");
                 
-                 Statement statement = con.createStatement();
-                
-                statement.execute("CREATE TABLE IF NOT EXISTS tbllivros(nome VARCHAR, autor VARCHAR, seccao VARCHAR)");
+                 
             } catch (java.sql.SQLException e1) {
 
                 e1.printStackTrace();
@@ -37,13 +35,14 @@ public void InsertLivroBd(String nome, String autor,String seccao) {
             
             
 
-            String sql = "INSERT INTO tbllivros(nome,autor,seccao) VALUES(?,?,?)";
+            String sql = "INSERT INTO tblLivros(nome,autor,seccao,qtdLivros) VALUES(?,?,?,?)";
 
             PreparedStatement stmt = con.prepareStatement(sql);
 
             stmt.setString(1, nome);
             stmt.setString(2,autor);
             stmt.setString(3,seccao);
+            stmt.setInt(4,qtdLivros);
             
             
 
@@ -53,7 +52,7 @@ public void InsertLivroBd(String nome, String autor,String seccao) {
             System.out.println("Gravado!");
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Errou ao Gravar No Insert");
         }
 
     }
