@@ -1,5 +1,6 @@
 package VIEW;
 
+import DAO.ConexaoDAO;
 import DAO.TratamentoDAO;
 import java.sql.*;
 import javax.swing.JOptionPane;
@@ -19,8 +20,8 @@ public class LivroVIEW extends javax.swing.JFrame {
      * Creates new form frmConsultaVIEW
      */
     public LivroVIEW() {
-
         initComponents();
+        readDatabase();
         
     }
 
@@ -31,7 +32,29 @@ public class LivroVIEW extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
 
-    
+    public void readDatabase() {
+        Connection conn;
+        PreparedStatement pstm;
+        conn = new ConexaoDAO().ConectaBD();
+        String sql = "SELECT * FROM tabelaLivros";
+        try {
+            pstm = conn.prepareStatement(sql);
+            ResultSet executarQuery = pstm.executeQuery();
+            DefaultTableModel livroViewTable = (DefaultTableModel) tabelaLivroVIEW.getModel();
+            livroViewTable.setNumRows(0);
+            while (executarQuery.next()) {
+                livroViewTable.addRow(new Object[]{
+                    executarQuery.getString("idL"),
+                    executarQuery.getString("nomeL"),
+                    executarQuery.getString("autorL"),
+                    executarQuery.getString("secaoL"),
+                    executarQuery.getString("quantidadeL"),});
+            }
+
+        } catch (SQLException sqlex) {
+            JOptionPane.showMessageDialog(null, "LivroVIEW: " + sqlex);
+        }
+    }
     
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -130,7 +153,6 @@ public class LivroVIEW extends javax.swing.JFrame {
         });
 
         btnAlterarVIEW.setText("ALTERAR");
-        btnAlterarVIEW.setEnabled(false);
         btnAlterarVIEW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarVIEWActionPerformed(evt);
@@ -145,7 +167,6 @@ public class LivroVIEW extends javax.swing.JFrame {
         });
 
         btnAlterar.setText("SALVAR");
-        btnAlterar.setEnabled(false);
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarActionPerformed(evt);
@@ -261,7 +282,7 @@ public class LivroVIEW extends javax.swing.JFrame {
             Integer quantidade = Integer.valueOf(txtQuantidadeVIEW.getText().toString());
             Cadastrar.InsertLivroBd(txtLivroVIEW.getText().toString(), txtAutorVIEW.getText().toString(), txtSecaoVIEW.getText().toString(), quantidade);
 
-
+            readDatabase();
             limparCampos();
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os Campos!");
@@ -288,7 +309,7 @@ public class LivroVIEW extends javax.swing.JFrame {
         if (tabelaLivroVIEW.getSelectedRow() != -1) {
 
             Cadastrar.DeleteLivro(Integer.valueOf(tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 0).toString()));
-
+            readDatabase();
  
         } else {
             JOptionPane.showMessageDialog(null, "Escolha um livro para excluir!");
@@ -305,7 +326,7 @@ public class LivroVIEW extends javax.swing.JFrame {
             Integer quantidade = Integer.valueOf(txtQuantidadeVIEW.getText().toString());
             Cadastrar.UpdateLivroBd(txtLivroVIEW.getText().toString(), txtAutorVIEW.getText().toString(), txtSecaoVIEW.getText().toString(), quantidade ,Integer.valueOf(tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 0).toString()));
 
-
+            readDatabase();
             limparCampos();
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os Campos!");
@@ -314,9 +335,9 @@ public class LivroVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnSairVIEW2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairVIEW2ActionPerformed
-//        this.dispose();
-//        DashBoardVIEW tela = new DashBoardVIEW();
-//        tela.setVisible(true);
+        this.dispose();
+        DashBoardVIEW tela = new DashBoardVIEW();
+        tela.setVisible(true);
     }//GEN-LAST:event_btnSairVIEW2ActionPerformed
 
     /**
