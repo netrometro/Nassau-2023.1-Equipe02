@@ -272,6 +272,9 @@ public class LivroVIEW extends javax.swing.JFrame {
         
         if(tabelaLivroVIEW.getSelectedRow()!= -1){
             txtQuantidadeVIEW.setText((String) tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 4));
+            txtSecaoVIEW.setText((String) tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 3));
+            txtAutorVIEW.setText((String) tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 2));
+            txtLivroVIEW.setText((String) tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 1));
         }
         
     }//GEN-LAST:event_btnAlterarVIEWActionPerformed
