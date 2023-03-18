@@ -44,9 +44,7 @@ public class TratamentoDAO {
     }
         //METODO DE ALTERAR LIVRO
         public void alterarLivro(LivroDTO objlivroDTO) {
-            String sql = "Update tabelaLivros(nomeL,autorL,secaoL,quantidadeL) VALUES(?,?,?,?)";
-
-            conn = new ConexaoDAO().ConectaBD();
+            String sql = "Update tabelaLivros(nomeL,autorL,secaoL,quantidadeL) VALUES(?,?,?,?)";         
 
             try {
                 pstm = conn.prepareStatement(sql);
@@ -64,4 +62,51 @@ public class TratamentoDAO {
             }
         
     }
+        
+        public void DeleteLivro(int idLivro) {
+		
+        try {
+            String sql = "DELETE FROM tabelaLivros WHERE idL = ?";
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);                    
+
+
+
+           stmt.setInt(1, idLivro);            
+   
+            
+ 
+           stmt.execute();
+           stmt.close();
+
+            
+        } catch (SQLException e) {            
+            throw new RuntimeException(e);
+        } }
+        
+        public void UpdateLivroBd(String nome,String autor,String seccao ,int quantidade ,int id){
+            
+             try {
+            
+            String sql = "UPDATE tabelaLivros set nomeL =?, autorL = ?, secaoL = ?, quantidadeL = ? WHERE idL = ? ;";
+
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setString(1, nome);
+            pstm.setString(2,autor);
+            pstm.setString(3,seccao);
+            pstm.setInt(4,quantidade);
+            pstm.setInt(5, id);
+            
+            pstm.execute();
+            pstm.close();
+
+            System.out.println("Gravado!");
+            JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+            
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+            
+        }
 }
