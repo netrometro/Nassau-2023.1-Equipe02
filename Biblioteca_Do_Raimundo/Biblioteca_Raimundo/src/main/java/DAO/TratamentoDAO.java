@@ -42,28 +42,8 @@ public class TratamentoDAO {
             throw new RuntimeException(e);
         }
     }
-        //METODO DE ALTERAR LIVRO
-        public void AlterarLivro(LivroDTO objlivroDTO) {
-            String sql = "Update tabelaLivros(nomeL,autorL,secaoL,quantidadeL) VALUES(?,?,?,?)";         
-
-            try {
-                pstm = conn.prepareStatement(sql);
-
-                pstm.setString(1, objlivroDTO.getNome_livro()); //1 -> =?
-                pstm.setString(2, objlivroDTO.getAutor_livro()); //2 -> =?
-                pstm.setString(3, objlivroDTO.getSecao_livro()); //3 -> =?
-                pstm.setInt(4, objlivroDTO.getQuantidade_livro()); //4 -> =?
-
-                pstm.execute();
-                pstm.close();
-
-            } catch (SQLException erro) {
-                JOptionPane.showMessageDialog(null, "LivroAlterarDAO: " + erro);
-            }
-        
-    }
-        
-        public void DeleteLivro(int idLivro) {
+      
+        public void DeleteLivroBd(int idLivro) {
 		
         try {
             String sql = "DELETE FROM tabelaLivros WHERE idL = ?";
@@ -130,5 +110,26 @@ public class TratamentoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+       
+        public void UpdateAutorBd( String autor, String best, int numero,int id) {
+           String sql = "UPDATE tabelaAutores set autorA =?, bestA = ?, nlivroA = ? WHERE idA = ? ;";    
+
+            try {
+                pstm = conn.prepareStatement(sql);
+
+                pstm.setString(1,autor ); //1 -> =?
+                pstm.setString(2,best ); //2 -> =?
+                pstm.setInt(3,numero ); //3 -> =?
+                pstm.setInt(4,id ); //4 -> =?
+
+                pstm.execute();
+                pstm.close();
+                
+              JOptionPane.showMessageDialog(null, "Alterado com sucesso!");  
+            } catch (SQLException erro) {
+                JOptionPane.showMessageDialog(null, "UpdateAutorDAO: " + erro);
+            }
+        
     }
 }

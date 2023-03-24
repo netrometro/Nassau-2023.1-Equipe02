@@ -1,6 +1,10 @@
 package VIEW;
 
+
+import VIEW.DashBoardVIEW;
+
 import DAO.*;
+
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,6 +18,7 @@ public class AutorVIEW extends javax.swing.JFrame {
     }
 
     TratamentoDAO bd = new TratamentoDAO();
+
     /**
      * Creates new form frmConsultaVIEW
      */
@@ -76,6 +81,7 @@ public class AutorVIEW extends javax.swing.JFrame {
         txtNLivroVIEW = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel3.setBackground(new java.awt.Color(0, 153, 153));
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
@@ -110,6 +116,7 @@ public class AutorVIEW extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabelaAutorVIEW.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabelaAutorVIEW);
         if (tabelaAutorVIEW.getColumnModel().getColumnCount() > 0) {
             tabelaAutorVIEW.getColumnModel().getColumn(0).setMinWidth(45);
@@ -145,7 +152,6 @@ public class AutorVIEW extends javax.swing.JFrame {
         });
 
         btnAlterarVIEW.setText("ALTERAR");
-        btnAlterarVIEW.setEnabled(false);
         btnAlterarVIEW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarVIEWActionPerformed(evt);
@@ -161,7 +167,6 @@ public class AutorVIEW extends javax.swing.JFrame {
         });
 
         btnAlterar.setText("SALVAR");
-        btnAlterar.setEnabled(false);
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarActionPerformed(evt);
@@ -269,6 +274,7 @@ public class AutorVIEW extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarVIEWActionPerformed
@@ -286,7 +292,16 @@ public class AutorVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrarVIEWActionPerformed
 
     private void btnAlterarVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarVIEWActionPerformed
-
+         if (tabelaAutorVIEW.getSelectedRow() != -1) {
+            txtAutorVIEW.setText((String) tabelaAutorVIEW.getValueAt(tabelaAutorVIEW.getSelectedRow(), 1));
+            txtBestVIEW.setText((String) tabelaAutorVIEW.getValueAt(tabelaAutorVIEW.getSelectedRow(), 2));
+            txtNLivroVIEW.setText((String) tabelaAutorVIEW.getValueAt(tabelaAutorVIEW.getSelectedRow(), 3));
+        
+            
+            
+        }else{
+             JOptionPane.showMessageDialog(null, "Selecione um Autor da tabela!");
+         }
     }//GEN-LAST:event_btnAlterarVIEWActionPerformed
 
     private void btnExcluirVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirVIEWActionPerformed
@@ -298,7 +313,16 @@ public class AutorVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparVIEWActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        if (!txtAutorVIEW.getText().trim().isEmpty() && !txtBestVIEW.getText().trim().isEmpty() && !txtNLivroVIEW.getText().trim().isEmpty() ) {
+            Integer quantidade = Integer.valueOf(txtNLivroVIEW.getText().toString());
+            bd.UpdateAutorBd(txtAutorVIEW.getText().toString(), txtBestVIEW.getText().toString(), quantidade ,Integer.valueOf(tabelaAutorVIEW.getValueAt(tabelaAutorVIEW.getSelectedRow(), 0).toString()));
 
+            readDatabase();
+            limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os Campos!");
+
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnSairVIEW2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairVIEW2ActionPerformed
