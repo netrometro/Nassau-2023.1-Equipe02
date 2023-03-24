@@ -159,7 +159,6 @@ public class AutorVIEW extends javax.swing.JFrame {
         });
 
         btnExcluirVIEW.setText("EXCLUIR");
-        btnExcluirVIEW.setEnabled(false);
         btnExcluirVIEW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirVIEWActionPerformed(evt);
@@ -305,7 +304,14 @@ public class AutorVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarVIEWActionPerformed
 
     private void btnExcluirVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirVIEWActionPerformed
+        if (tabelaAutorVIEW.getSelectedRow() != -1) {
 
+            bd.DeleteAutorBd(Integer.valueOf(tabelaAutorVIEW.getValueAt(tabelaAutorVIEW.getSelectedRow(), 0).toString()));
+            readDatabase();
+ 
+        } else {
+            JOptionPane.showMessageDialog(null, "Escolha um Autor para excluir!");
+        }
     }//GEN-LAST:event_btnExcluirVIEWActionPerformed
 
     private void btnLimparVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparVIEWActionPerformed

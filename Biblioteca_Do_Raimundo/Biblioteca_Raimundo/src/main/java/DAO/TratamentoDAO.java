@@ -5,11 +5,7 @@
 package DAO;
 
 import DTO.LivroDTO;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -131,5 +127,23 @@ public class TratamentoDAO {
                 JOptionPane.showMessageDialog(null, "UpdateAutorDAO: " + erro);
             }
         
+    }
+    public void DeleteAutorBd(int idA) {
+        try {
+            String sql = "DELETE FROM tabelaAutores WHERE idA = ?";
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);                    
+
+
+           stmt.setInt(1, idA);            
+   
+             
+           stmt.execute();
+           stmt.close();
+
+            
+        } catch (SQLException e) {            
+            throw new RuntimeException(e);
+        }
     }
 }
