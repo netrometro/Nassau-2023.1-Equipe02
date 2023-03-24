@@ -1,26 +1,22 @@
 package VIEW;
 
 import DAO.ConexaoDAO;
-import DAO.TratamentoDAO;
 import VIEW.DashBoardVIEW;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class LivroVIEW extends javax.swing.JFrame {
-
-    TratamentoDAO Cadastrar = new TratamentoDAO();
+public class AutorVIEW extends javax.swing.JFrame {
 
     public void limparCampos (){
-         txtLivroVIEW.setText("");
-        txtQuantidadeVIEW.setText("");
+        txtNLivroVIEW.setText("");
+        txtBestVIEW.setText("");
         txtAutorVIEW.setText("");
-        txtSecaoVIEW.setText("");
     }
     /**
      * Creates new form frmConsultaVIEW
      */
-    public LivroVIEW() {
+    public AutorVIEW() {
         initComponents();
         readDatabase();
         
@@ -37,27 +33,25 @@ public class LivroVIEW extends javax.swing.JFrame {
         Connection conn;
         PreparedStatement pstm;
         conn = new ConexaoDAO().ConectaBD();
-        String sql = "SELECT * FROM tabelaLivros";
+        String sql = "SELECT * FROM tabelaAutores";
         try {
             pstm = conn.prepareStatement(sql);
             ResultSet executarQuery = pstm.executeQuery();
-            DefaultTableModel livroViewTable = (DefaultTableModel) tabelaLivroVIEW.getModel();
-            livroViewTable.setNumRows(0);
+            DefaultTableModel autorViewTable = (DefaultTableModel) tabelaAutorVIEW.getModel();
+            autorViewTable.setNumRows(0);
             while (executarQuery.next()) {
-                livroViewTable.addRow(new Object[]{
-                    executarQuery.getString("idL"),
-                    executarQuery.getString("nomeL"),
-                    executarQuery.getString("autorL"),
-                    executarQuery.getString("secaoL"),
-                    executarQuery.getString("quantidadeL"),});
+                autorViewTable.addRow(new Object[]{
+                    executarQuery.getString("idA"),
+                    executarQuery.getString("autorA"),
+                    executarQuery.getString("bestA"),
+                    executarQuery.getString("nlivroA"),});
             }
 
         } catch (SQLException sqlex) {
-            JOptionPane.showMessageDialog(null, "LivroVIEW: " + sqlex);
+            JOptionPane.showMessageDialog(null, "AutorVIEW: " + sqlex);
         }
     }
     
-
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -65,15 +59,11 @@ public class LivroVIEW extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaLivroVIEW = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        txtQuantidadeVIEW = new javax.swing.JTextField();
+        tabelaAutorVIEW = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        txtLivroVIEW = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtAutorVIEW = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtSecaoVIEW = new javax.swing.JTextField();
         btnCadastrarVIEW = new javax.swing.JButton();
         btnLimparVIEW = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -81,6 +71,8 @@ public class LivroVIEW extends javax.swing.JFrame {
         btnExcluirVIEW = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnSairVIEW2 = new javax.swing.JButton();
+        txtBestVIEW = new javax.swing.JTextField();
+        txtNLivroVIEW = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,52 +84,50 @@ public class LivroVIEW extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("LIVROS");
+        jLabel4.setText("AUTORES");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 2, 11)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("preencha apenas o que deseja consultar.");
 
-        tabelaLivroVIEW.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaAutorVIEW.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "LIVRO", "AUTOR", "SECÃO", "QTD"
+                "ID", "AUTOR", "BESTSELLERS", "Nº LIVROS"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tabelaLivroVIEW);
-        if (tabelaLivroVIEW.getColumnModel().getColumnCount() > 0) {
-            tabelaLivroVIEW.getColumnModel().getColumn(0).setMinWidth(45);
-            tabelaLivroVIEW.getColumnModel().getColumn(0).setMaxWidth(45);
-            tabelaLivroVIEW.getColumnModel().getColumn(4).setMinWidth(60);
-            tabelaLivroVIEW.getColumnModel().getColumn(4).setMaxWidth(60);
+        jScrollPane1.setViewportView(tabelaAutorVIEW);
+        if (tabelaAutorVIEW.getColumnModel().getColumnCount() > 0) {
+            tabelaAutorVIEW.getColumnModel().getColumn(0).setMinWidth(45);
+            tabelaAutorVIEW.getColumnModel().getColumn(0).setMaxWidth(45);
+            tabelaAutorVIEW.getColumnModel().getColumn(3).setMinWidth(100);
+            tabelaAutorVIEW.getColumnModel().getColumn(3).setMaxWidth(100);
         }
 
-        jLabel1.setText("Quantidade: ");
+        jLabel2.setText("Autor:");
 
-        txtQuantidadeVIEW.addActionListener(new java.awt.event.ActionListener() {
+        jLabel6.setText("Bestsellers: ");
+
+        txtAutorVIEW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtQuantidadeVIEWActionPerformed(evt);
+                txtAutorVIEWActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Livro: ");
-
-        jLabel6.setText("Autor:");
-
-        jLabel7.setText("Secão:");
+        jLabel7.setText("Nº Livros:");
 
         btnCadastrarVIEW.setText("CADASTRAR");
         btnCadastrarVIEW.addActionListener(new java.awt.event.ActionListener() {
@@ -154,6 +144,7 @@ public class LivroVIEW extends javax.swing.JFrame {
         });
 
         btnAlterarVIEW.setText("ALTERAR");
+        btnAlterarVIEW.setEnabled(false);
         btnAlterarVIEW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarVIEWActionPerformed(evt);
@@ -161,6 +152,7 @@ public class LivroVIEW extends javax.swing.JFrame {
         });
 
         btnExcluirVIEW.setText("EXCLUIR");
+        btnExcluirVIEW.setEnabled(false);
         btnExcluirVIEW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirVIEWActionPerformed(evt);
@@ -168,6 +160,7 @@ public class LivroVIEW extends javax.swing.JFrame {
         });
 
         btnAlterar.setText("SALVAR");
+        btnAlterar.setEnabled(false);
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarActionPerformed(evt);
@@ -184,56 +177,62 @@ public class LivroVIEW extends javax.swing.JFrame {
             }
         });
 
+        txtBestVIEW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBestVIEWActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 909, Short.MAX_VALUE)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSairVIEW2))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtQuantidadeVIEW, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnCadastrarVIEW))
-                                .addGap(66, 66, 66)
+                                .addGap(39, 39, 39)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnAlterarVIEW)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnAlterar))
-                                    .addComponent(txtLivroVIEW, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(67, 67, 67)
+                                .addComponent(txtAutorVIEW, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnExcluirVIEW)
-                                    .addComponent(txtAutorVIEW, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(btnCadastrarVIEW)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAlterarVIEW)
+                                .addGap(46, 46, 46)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtBestVIEW, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnAlterar)
+                                .addGap(127, 127, 127)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnExcluirVIEW)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnLimparVIEW))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtSecaoVIEW, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtNLivroVIEW)))
                         .addGap(8, 8, 8))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSairVIEW2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -244,18 +243,16 @@ public class LivroVIEW extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtQuantidadeVIEW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(txtLivroVIEW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(txtAutorVIEW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(txtSecaoVIEW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBestVIEW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNLivroVIEW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrarVIEW)
@@ -273,49 +270,16 @@ public class LivroVIEW extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtQuantidadeVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeVIEWActionPerformed
-
-    }//GEN-LAST:event_txtQuantidadeVIEWActionPerformed
-
     private void btnCadastrarVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarVIEWActionPerformed
-
-        if (!txtLivroVIEW.getText().trim().isEmpty() && !txtAutorVIEW.getText().trim().isEmpty() && !txtSecaoVIEW.getText().trim().isEmpty() && !txtQuantidadeVIEW.getText().trim().isEmpty()) {
-            Integer quantidade = Integer.valueOf(txtQuantidadeVIEW.getText().toString());
-            Cadastrar.InsertLivroBd(txtLivroVIEW.getText().toString(), txtAutorVIEW.getText().toString(), txtSecaoVIEW.getText().toString(), quantidade);
-
-            readDatabase();
-            limparCampos();
-        } else {
-            JOptionPane.showMessageDialog(null, "Preencha todos os Campos!");
-
-        }
 
     }//GEN-LAST:event_btnCadastrarVIEWActionPerformed
 
     private void btnAlterarVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarVIEWActionPerformed
 
-        if (tabelaLivroVIEW.getSelectedRow() != -1) {
-            txtQuantidadeVIEW.setText((String) tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 4));
-            txtSecaoVIEW.setText((String) tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 3));
-            txtAutorVIEW.setText((String) tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 2));
-            txtLivroVIEW.setText((String) tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 1));
-        
-            
-            
-        }
-
     }//GEN-LAST:event_btnAlterarVIEWActionPerformed
 
     private void btnExcluirVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirVIEWActionPerformed
-        if (tabelaLivroVIEW.getSelectedRow() != -1) {
 
-            Cadastrar.DeleteLivro(Integer.valueOf(tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 0).toString()));
-            readDatabase();
- 
-        } else {
-            JOptionPane.showMessageDialog(null, "Escolha um livro para excluir!");
-
-        }
     }//GEN-LAST:event_btnExcluirVIEWActionPerformed
 
     private void btnLimparVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparVIEWActionPerformed
@@ -323,16 +287,7 @@ public class LivroVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparVIEWActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-         if (!txtLivroVIEW.getText().trim().isEmpty() && !txtAutorVIEW.getText().trim().isEmpty() && !txtSecaoVIEW.getText().trim().isEmpty() && !txtQuantidadeVIEW.getText().trim().isEmpty()) {
-            Integer quantidade = Integer.valueOf(txtQuantidadeVIEW.getText().toString());
-            Cadastrar.UpdateLivroBd(txtLivroVIEW.getText().toString(), txtAutorVIEW.getText().toString(), txtSecaoVIEW.getText().toString(), quantidade ,Integer.valueOf(tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 0).toString()));
 
-            readDatabase();
-            limparCampos();
-        } else {
-            JOptionPane.showMessageDialog(null, "Preencha todos os Campos!");
-
-        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnSairVIEW2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairVIEW2ActionPerformed
@@ -340,6 +295,14 @@ public class LivroVIEW extends javax.swing.JFrame {
         DashBoardVIEW tela = new DashBoardVIEW();
         tela.setVisible(true);
     }//GEN-LAST:event_btnSairVIEW2ActionPerformed
+
+    private void txtAutorVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAutorVIEWActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAutorVIEWActionPerformed
+
+    private void txtBestVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBestVIEWActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBestVIEWActionPerformed
 
     /**
      * @param args the command line arguments
@@ -358,14 +321,22 @@ public class LivroVIEW extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LivroVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AutorVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LivroVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AutorVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LivroVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AutorVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LivroVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AutorVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -378,7 +349,7 @@ public class LivroVIEW extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LivroVIEW().setVisible(true);
+                new AutorVIEW().setVisible(true);
             }
         });
     }
@@ -390,7 +361,6 @@ public class LivroVIEW extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluirVIEW;
     private javax.swing.JButton btnLimparVIEW;
     private javax.swing.JButton btnSairVIEW2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -399,11 +369,10 @@ public class LivroVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable tabelaLivroVIEW;
+    private javax.swing.JTable tabelaAutorVIEW;
     private javax.swing.JTextField txtAutorVIEW;
-    private javax.swing.JTextField txtLivroVIEW;
-    private javax.swing.JTextField txtQuantidadeVIEW;
-    private javax.swing.JTextField txtSecaoVIEW;
+    private javax.swing.JTextField txtBestVIEW;
+    private javax.swing.JTextField txtNLivroVIEW;
     // End of variables declaration//GEN-END:variables
 
 }

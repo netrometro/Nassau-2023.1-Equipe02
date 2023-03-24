@@ -29,6 +29,8 @@ public class DashBoardVIEW extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        btnAutorVIEW = new javax.swing.JButton();
+        btnFuncionarioVIEW = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +58,27 @@ public class DashBoardVIEW extends javax.swing.JFrame {
             }
         });
 
+        btnAutorVIEW.setBackground(new java.awt.Color(105, 105, 105));
+        btnAutorVIEW.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAutorVIEW.setForeground(new java.awt.Color(255, 255, 255));
+        btnAutorVIEW.setText("Autores");
+        btnAutorVIEW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAutorVIEWActionPerformed(evt);
+            }
+        });
+
+        btnFuncionarioVIEW.setBackground(new java.awt.Color(105, 105, 105));
+        btnFuncionarioVIEW.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnFuncionarioVIEW.setForeground(new java.awt.Color(255, 255, 255));
+        btnFuncionarioVIEW.setText("Funcionarios");
+        btnFuncionarioVIEW.setEnabled(false);
+        btnFuncionarioVIEW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFuncionarioVIEWActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,7 +93,13 @@ public class DashBoardVIEW extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(btnAutorVIEW, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(btnFuncionarioVIEW, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -78,9 +107,13 @@ public class DashBoardVIEW extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(39, 39, 39)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAutorVIEW)
+                .addGap(18, 18, 18)
+                .addComponent(btnFuncionarioVIEW)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addContainerGap())
         );
@@ -99,6 +132,17 @@ public class DashBoardVIEW extends javax.swing.JFrame {
         LivroVIEW tela = new LivroVIEW();
         tela.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnAutorVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutorVIEWActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        AutorVIEW tela = new AutorVIEW();
+        tela.setVisible(true);
+    }//GEN-LAST:event_btnAutorVIEWActionPerformed
+
+    private void btnFuncionarioVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionarioVIEWActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFuncionarioVIEWActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,6 +187,8 @@ public class DashBoardVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAutorVIEW;
+    private javax.swing.JButton btnFuncionarioVIEW;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
