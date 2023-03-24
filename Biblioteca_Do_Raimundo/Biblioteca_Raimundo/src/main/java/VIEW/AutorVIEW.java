@@ -1,7 +1,6 @@
 package VIEW;
 
-import DAO.ConexaoDAO;
-import VIEW.DashBoardVIEW;
+import DAO.*;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -13,6 +12,8 @@ public class AutorVIEW extends javax.swing.JFrame {
         txtBestVIEW.setText("");
         txtAutorVIEW.setText("");
     }
+
+    TratamentoDAO bd = new TratamentoDAO();
     /**
      * Creates new form frmConsultaVIEW
      */
@@ -271,6 +272,16 @@ public class AutorVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarVIEWActionPerformed
+           if (!txtAutorVIEW.getText().trim().isEmpty() && !txtBestVIEW.getText().trim().isEmpty() && !txtNLivroVIEW.getText().trim().isEmpty()) {
+            Integer quantidadeDeLivros = Integer.valueOf(txtNLivroVIEW.getText().toString());
+            bd.InsertAutorBd(txtAutorVIEW.getText().toString(), txtBestVIEW.getText().toString(), quantidadeDeLivros);
+
+            readDatabase();
+            limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os Campos!");
+
+        }
 
     }//GEN-LAST:event_btnCadastrarVIEWActionPerformed
 
