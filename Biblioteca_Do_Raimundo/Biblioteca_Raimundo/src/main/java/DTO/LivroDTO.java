@@ -3,15 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DTO;
-
 /**
- * @author Gabriel Luiz
- * @author Samuel  Ruan
- * @author Gabriel Lima
+ * @author gabri
  */
 public class LivroDTO {
-      private String nome_livro, autor_livro, secao_livro;
-    private int id_livro;
+    private String nome_livro, autor_livro, secao_livro;
+    private int id_livro, quantidade_livro;
     
     //Encapsulamento  livro
     public String getNome_livro() {
@@ -44,11 +41,12 @@ public class LivroDTO {
     public void setId_livro(int id_livro) {
         this.id_livro = id_livro;
     }
-    //Encapsulamento da quantidade dos livros
-    public int getQtd_livro() {
-        return qtd_livro;
+    
+    //Encapsulamento  quantidade
+    public int getQuantidade_livro() {
+        return quantidade_livro;
     }
-    public void setQtd_livro(int qtd_livro) {
-        this.id_livro = qtd_livro;
+    public void setQuantidade(int quantidade_livro) {
+        this.quantidade_livro = quantidade_livro;
     }
 }
