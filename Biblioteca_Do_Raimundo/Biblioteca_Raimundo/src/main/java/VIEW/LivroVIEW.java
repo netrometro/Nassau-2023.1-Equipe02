@@ -2,6 +2,7 @@ package VIEW;
 
 import DAO.ConexaoDAO;
 import DAO.TratamentoDAO;
+import VIEW.DashBoardVIEW;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
