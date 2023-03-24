@@ -43,7 +43,7 @@ public class TratamentoDAO {
         }
     }
         //METODO DE ALTERAR LIVRO
-        public void alterarLivro(LivroDTO objlivroDTO) {
+        public void AlterarLivro(LivroDTO objlivroDTO) {
             String sql = "Update tabelaLivros(nomeL,autorL,secaoL,quantidadeL) VALUES(?,?,?,?)";         
 
             try {
@@ -109,4 +109,26 @@ public class TratamentoDAO {
         }
             
         }
+        
+        public void InsertAutorBd(String autor, String nlivros, int best) {
+        try {
+            
+            String sql = "INSERT INTO tabelaAutores(autorA,bestA,nlivroA) VALUES(?,?,?)";
+
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setString(1, autor);
+            pstm.setString(2,nlivros);
+            pstm.setInt(3,best);
+            
+            pstm.execute();
+            pstm.close();
+
+            System.out.println("Gravado!");
+            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+            
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -1,7 +1,6 @@
 package VIEW;
 
 import DAO.ConexaoDAO;
-import DAO.TratamentoAutorDAO;
 import VIEW.DashBoardVIEW;
 import java.sql.*;
 import javax.swing.JOptionPane;
