@@ -117,6 +117,7 @@ public class LivroVIEW extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabelaLivroVIEW.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabelaLivroVIEW);
         if (tabelaLivroVIEW.getColumnModel().getColumnCount() > 0) {
             tabelaLivroVIEW.getColumnModel().getColumn(0).setMinWidth(45);

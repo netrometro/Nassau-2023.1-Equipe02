@@ -116,6 +116,7 @@ public class AutorVIEW extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabelaAutorVIEW.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabelaAutorVIEW);
         if (tabelaAutorVIEW.getColumnModel().getColumnCount() > 0) {
             tabelaAutorVIEW.getColumnModel().getColumn(0).setMinWidth(45);
