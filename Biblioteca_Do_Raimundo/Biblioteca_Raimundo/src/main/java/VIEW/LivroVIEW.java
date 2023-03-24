@@ -302,14 +302,16 @@ public class LivroVIEW extends javax.swing.JFrame {
         
             
             
-        }
+        }else{
+             JOptionPane.showMessageDialog(null, "Selecione um Livro da tabela!");
+         }
 
     }//GEN-LAST:event_btnAlterarVIEWActionPerformed
 
     private void btnExcluirVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirVIEWActionPerformed
         if (tabelaLivroVIEW.getSelectedRow() != -1) {
 
-            Cadastrar.DeleteLivro(Integer.valueOf(tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 0).toString()));
+            Cadastrar.DeleteLivroBd(Integer.valueOf(tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 0).toString()));
             readDatabase();
  
         } else {
