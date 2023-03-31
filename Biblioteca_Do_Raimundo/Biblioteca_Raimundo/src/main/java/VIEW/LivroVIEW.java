@@ -81,6 +81,8 @@ public class LivroVIEW extends javax.swing.JFrame {
         btnExcluirVIEW = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnSairVIEW2 = new javax.swing.JButton();
+        bntAlugarVIEW = new javax.swing.JButton();
+        btnAlugadosVIEW = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -185,6 +187,24 @@ public class LivroVIEW extends javax.swing.JFrame {
             }
         });
 
+        bntAlugarVIEW.setText("ALUGAR");
+        bntAlugarVIEW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntAlugarVIEWActionPerformed(evt);
+            }
+        });
+
+        btnAlugadosVIEW.setBackground(new java.awt.Color(105, 105, 105));
+        btnAlugadosVIEW.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAlugadosVIEW.setForeground(new java.awt.Color(255, 255, 255));
+        btnAlugadosVIEW.setText("Alugados");
+        btnAlugadosVIEW.setEnabled(false);
+        btnAlugadosVIEW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlugadosVIEWActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -193,13 +213,8 @@ public class LivroVIEW extends javax.swing.JFrame {
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
@@ -221,8 +236,11 @@ public class LivroVIEW extends javax.swing.JFrame {
                                 .addGap(67, 67, 67)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnExcluirVIEW)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnExcluirVIEW)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(bntAlugarVIEW))
                                     .addComponent(txtAutorVIEW, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnLimparVIEW))
@@ -232,9 +250,15 @@ public class LivroVIEW extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtSecaoVIEW, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(8, 8, 8))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSairVIEW2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator1)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAlugadosVIEW)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSairVIEW2)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -263,11 +287,14 @@ public class LivroVIEW extends javax.swing.JFrame {
                     .addComponent(btnLimparVIEW)
                     .addComponent(btnAlterarVIEW)
                     .addComponent(btnExcluirVIEW)
-                    .addComponent(btnAlterar))
+                    .addComponent(btnAlterar)
+                    .addComponent(bntAlugarVIEW))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSairVIEW2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSairVIEW2)
+                    .addComponent(btnAlugadosVIEW))
                 .addContainerGap())
         );
 
@@ -344,6 +371,28 @@ public class LivroVIEW extends javax.swing.JFrame {
         tela.setVisible(true);
     }//GEN-LAST:event_btnSairVIEW2ActionPerformed
 
+    private void bntAlugarVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAlugarVIEWActionPerformed
+        if (tabelaLivroVIEW.getSelectedRow() != -1) {
+            int quantidade = Integer.parseInt( tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 4).toString())-1 ;
+            int id = Integer.parseInt(tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 0).toString());
+            String nome =tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 1).toString();
+            
+            Cadastrar.UpdateAlugarLivroBd( quantidade, id);
+             
+            Cadastrar.InsertAluguelLivroBd(nome, id);
+            
+            
+            
+            readDatabase();
+        }else{
+             JOptionPane.showMessageDialog(null, "Selecione um Livro da tabela!");
+         }
+    }//GEN-LAST:event_bntAlugarVIEWActionPerformed
+
+    private void btnAlugadosVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlugadosVIEWActionPerformed
+       
+    }//GEN-LAST:event_btnAlugadosVIEWActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -387,8 +436,10 @@ public class LivroVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntAlugarVIEW;
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnAlterarVIEW;
+    private javax.swing.JButton btnAlugadosVIEW;
     private javax.swing.JButton btnCadastrarVIEW;
     private javax.swing.JButton btnExcluirVIEW;
     private javax.swing.JButton btnLimparVIEW;

@@ -5,7 +5,11 @@
 package DAO;
 
 import DTO.LivroDTO;
+
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,6 +19,8 @@ import javax.swing.JOptionPane;
 public class TratamentoDAO {
     PreparedStatement pstm;
     Connection conn = new ConexaoDAO().ConectaBD();
+    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    Date data = new Date();
     
     public void InsertLivroBd(String nome, String autor, String seccao, int quantidade) {
         try {
@@ -60,7 +66,7 @@ public class TratamentoDAO {
             throw new RuntimeException(e);
         } }
         
-        public void UpdateLivroBd(String nome,String autor,String seccao ,int quantidade ,int id){
+        public void UpdateLivroBd(String nome,String autor,String secao ,int quantidade ,int id){
             
              try {
             
@@ -70,7 +76,7 @@ public class TratamentoDAO {
 
             pstm.setString(1, nome);
             pstm.setString(2,autor);
-            pstm.setString(3,seccao);
+            pstm.setString(3,secao);
             pstm.setInt(4,quantidade);
             pstm.setInt(5, id);
             
@@ -128,6 +134,7 @@ public class TratamentoDAO {
             }
         
     }
+
     public void DeleteAutorBd(int idA) {
         try {
             String sql = "DELETE FROM tabelaAutores WHERE idA = ?";
@@ -146,4 +153,51 @@ public class TratamentoDAO {
             throw new RuntimeException(e);
         }
     }
+
+        public void InsertAluguelLivroBd(String nome, int id) {
+        try {
+            
+            String sql = "INSERT INTO tabelaAluguelLivros(idAL, nomeAL,dataAL) VALUES(?,?,?)";
+            
+            
+            pstm = conn.prepareStatement(sql);
+            
+            pstm.setInt(1,id);
+            pstm.setString(2, nome);
+            pstm.setString(3, dateFormat.format(data).toString());
+            
+            
+            pstm.execute();
+            pstm.close();
+
+            
+
+            
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+        public void UpdateAlugarLivroBd(int quantidade ,int id){
+            
+             try {
+            
+            String sql = "UPDATE tabelaLivros set quantidadeL = ? WHERE idL = ? ;";
+
+            pstm = conn.prepareStatement(sql);
+
+            
+            pstm.setInt(1,quantidade);
+            pstm.setInt(2, id);
+            
+            pstm.execute();
+            pstm.close();
+
+            
+            
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+            
+        }
+
 }
