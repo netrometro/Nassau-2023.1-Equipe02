@@ -7,6 +7,7 @@ import DAO.*;
 
 import java.sql.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class FuncionarioVIEW extends javax.swing.JFrame {
 
@@ -24,7 +25,7 @@ public class FuncionarioVIEW extends javax.swing.JFrame {
      */
     public FuncionarioVIEW() {
         initComponents();
-        //readDatabase();
+        readDatabase();
         
     }
 
@@ -35,6 +36,29 @@ public class FuncionarioVIEW extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
+    public void readDatabase() {
+        Connection conn;
+        PreparedStatement pstm;
+        conn = new ConexaoDAO().ConectaBD();
+        String sql = "SELECT * FROM tabelaFuncionarios";
+        try {
+            pstm = conn.prepareStatement(sql);
+            ResultSet executarQuery = pstm.executeQuery();
+            DefaultTableModel funcionarioViewTable = (DefaultTableModel) tabelaFuncionarioVIEW.getModel();
+            funcionarioViewTable.setNumRows(0);
+            while (executarQuery.next()) {
+                funcionarioViewTable.addRow(new Object[]{
+                    executarQuery.getString("idF"),
+                    executarQuery.getString("funcionariosF"),
+                    executarQuery.getString("cargoF"),
+                    executarQuery.getString("turnoF"),
+                    executarQuery.getString("contatoF"),});
+            }
+
+        } catch (SQLException sqlex) {
+            JOptionPane.showMessageDialog(null, "FuncionarioVIEW: " + sqlex);
+        }
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
