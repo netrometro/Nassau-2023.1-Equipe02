@@ -72,7 +72,6 @@ public class DashBoardVIEW extends javax.swing.JFrame {
         btnFuncionarioVIEW.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnFuncionarioVIEW.setForeground(new java.awt.Color(255, 255, 255));
         btnFuncionarioVIEW.setText("Funcionarios");
-        btnFuncionarioVIEW.setEnabled(false);
         btnFuncionarioVIEW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFuncionarioVIEWActionPerformed(evt);
@@ -141,7 +140,9 @@ public class DashBoardVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAutorVIEWActionPerformed
 
     private void btnFuncionarioVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionarioVIEWActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        FuncionarioVIEW tela = new FuncionarioVIEW();
+        tela.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_btnFuncionarioVIEWActionPerformed
 
     /**
