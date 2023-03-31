@@ -117,6 +117,7 @@ public class LivroVIEW extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabelaLivroVIEW.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabelaLivroVIEW);
         if (tabelaLivroVIEW.getColumnModel().getColumnCount() > 0) {
             tabelaLivroVIEW.getColumnModel().getColumn(0).setMinWidth(45);
@@ -302,14 +303,16 @@ public class LivroVIEW extends javax.swing.JFrame {
         
             
             
-        }
+        }else{
+             JOptionPane.showMessageDialog(null, "Selecione um Livro da tabela!");
+         }
 
     }//GEN-LAST:event_btnAlterarVIEWActionPerformed
 
     private void btnExcluirVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirVIEWActionPerformed
         if (tabelaLivroVIEW.getSelectedRow() != -1) {
 
-            Cadastrar.DeleteLivro(Integer.valueOf(tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 0).toString()));
+            Cadastrar.DeleteLivroBd(Integer.valueOf(tabelaLivroVIEW.getValueAt(tabelaLivroVIEW.getSelectedRow(), 0).toString()));
             readDatabase();
  
         } else {
