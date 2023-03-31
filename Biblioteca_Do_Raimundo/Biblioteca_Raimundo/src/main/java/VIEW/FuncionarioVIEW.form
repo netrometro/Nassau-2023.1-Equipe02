@@ -47,7 +47,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jLabel3" alignment="1" pref="926" max="32767" attributes="0"/>
+          <Component id="jLabel3" alignment="1" max="32767" attributes="0"/>
           <Component id="jLabel5" alignment="1" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
@@ -56,45 +56,40 @@
                       <Component id="btnSairVIEW2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtAutorVIEW" min="-2" pref="200" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                               <Component id="btnCadastrarVIEW" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnAlterarVIEW" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnAlterar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="txtBestVIEW" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtFuncionarioVIEW" min="-2" pref="188" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtCargoVIEW" min="-2" pref="187" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtTurnoVIEW" min="-2" pref="152" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnAlterar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="btnExcluirVIEW" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnLimparVIEW" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtNLivroVIEW" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="txtContatoVIEW" min="-2" pref="151" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                   </Group>
@@ -125,10 +120,12 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtAutorVIEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtFuncionarioVIEW" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBestVIEW" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtNLivroVIEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCargoVIEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtContatoVIEW" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTurnoVIEW" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -169,7 +166,7 @@
           <Font name="Segoe UI Black" size="12" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="AUTORES"/>
+        <Property name="text" type="java.lang.String" value="FUNCIONARIOS"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
@@ -188,14 +185,15 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tabelaAutorVIEW">
+        <Component class="javax.swing.JTable" name="tabelaFuncionarioVIEW">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="4">
+              <Table columnCount="5" rowCount="4">
                 <Column editable="false" title="ID" type="java.lang.Object"/>
-                <Column editable="false" title="AUTOR" type="java.lang.Object"/>
-                <Column editable="false" title="BESTSELLERS" type="java.lang.Object"/>
-                <Column editable="false" title="N&#xba; LIVROS" type="java.lang.Object"/>
+                <Column editable="false" title="FUNCIONARIO" type="java.lang.Object"/>
+                <Column editable="false" title="CARGO" type="java.lang.Object"/>
+                <Column editable="false" title="TURNO" type="java.lang.Object"/>
+                <Column editable="false" title="CONTATO" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -215,7 +213,12 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -231,27 +234,28 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Autor:"/>
+        <Property name="text" type="java.lang.String" value="Funcionario:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Bestsellers: "/>
+        <Property name="text" type="java.lang.String" value="Cargo:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtAutorVIEW">
+    <Component class="javax.swing.JTextField" name="txtFuncionarioVIEW">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAutorVIEWActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFuncionarioVIEWActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
-        <Property name="text" type="java.lang.String" value="N&#xba; Livros:"/>
+        <Property name="text" type="java.lang.String" value="Contato:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnCadastrarVIEW">
       <Properties>
         <Property name="text" type="java.lang.String" value="CADASTRAR"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarVIEWActionPerformed"/>
@@ -270,6 +274,7 @@
     <Component class="javax.swing.JButton" name="btnAlterarVIEW">
       <Properties>
         <Property name="text" type="java.lang.String" value="ALTERAR"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarVIEWActionPerformed"/>
@@ -278,6 +283,7 @@
     <Component class="javax.swing.JButton" name="btnExcluirVIEW">
       <Properties>
         <Property name="text" type="java.lang.String" value="EXCLUIR"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirVIEWActionPerformed"/>
@@ -286,6 +292,7 @@
     <Component class="javax.swing.JButton" name="btnAlterar">
       <Properties>
         <Property name="text" type="java.lang.String" value="SALVAR"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarActionPerformed"/>
@@ -303,17 +310,28 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="v o l t a"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSairVIEW2ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtBestVIEW">
+    <Component class="javax.swing.JTextField" name="txtCargoVIEW">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBestVIEWActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCargoVIEWActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtNLivroVIEW">
+    <Component class="javax.swing.JTextField" name="txtContatoVIEW">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Turno:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTurnoVIEW">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTurnoVIEWActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
