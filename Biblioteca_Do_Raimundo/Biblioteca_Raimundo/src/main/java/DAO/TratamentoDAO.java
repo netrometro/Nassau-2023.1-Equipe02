@@ -5,11 +5,7 @@
 package DAO;
 
 import DTO.LivroDTO;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -42,28 +38,8 @@ public class TratamentoDAO {
             throw new RuntimeException(e);
         }
     }
-        //METODO DE ALTERAR LIVRO
-        public void alterarLivro(LivroDTO objlivroDTO) {
-            String sql = "Update tabelaLivros(nomeL,autorL,secaoL,quantidadeL) VALUES(?,?,?,?)";         
-
-            try {
-                pstm = conn.prepareStatement(sql);
-
-                pstm.setString(1, objlivroDTO.getNome_livro()); //1 -> =?
-                pstm.setString(2, objlivroDTO.getAutor_livro()); //2 -> =?
-                pstm.setString(3, objlivroDTO.getSecao_livro()); //3 -> =?
-                pstm.setInt(4, objlivroDTO.getQuantidade_livro()); //4 -> =?
-
-                pstm.execute();
-                pstm.close();
-
-            } catch (SQLException erro) {
-                JOptionPane.showMessageDialog(null, "LivroAlterarDAO: " + erro);
-            }
-        
-    }
-        
-        public void DeleteLivro(int idLivro) {
+      
+        public void DeleteLivroBd(int idLivro) {
 		
         try {
             String sql = "DELETE FROM tabelaLivros WHERE idL = ?";
@@ -109,4 +85,65 @@ public class TratamentoDAO {
         }
             
         }
+        
+        public void InsertAutorBd(String autor, String nlivros, int best) {
+        try {
+            
+            String sql = "INSERT INTO tabelaAutores(autorA,bestA,nlivroA) VALUES(?,?,?)";
+
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setString(1, autor);
+            pstm.setString(2,nlivros);
+            pstm.setInt(3,best);
+            
+            pstm.execute();
+            pstm.close();
+
+            System.out.println("Gravado!");
+            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+            
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+       
+        public void UpdateAutorBd( String autor, String best, int numero,int id) {
+           String sql = "UPDATE tabelaAutores set autorA =?, bestA = ?, nlivroA = ? WHERE idA = ? ;";    
+
+            try {
+                pstm = conn.prepareStatement(sql);
+
+                pstm.setString(1,autor ); //1 -> =?
+                pstm.setString(2,best ); //2 -> =?
+                pstm.setInt(3,numero ); //3 -> =?
+                pstm.setInt(4,id ); //4 -> =?
+
+                pstm.execute();
+                pstm.close();
+                
+              JOptionPane.showMessageDialog(null, "Alterado com sucesso!");  
+            } catch (SQLException erro) {
+                JOptionPane.showMessageDialog(null, "UpdateAutorDAO: " + erro);
+            }
+        
+    }
+    public void DeleteAutorBd(int idA) {
+        try {
+            String sql = "DELETE FROM tabelaAutores WHERE idA = ?";
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);                    
+
+
+           stmt.setInt(1, idA);            
+   
+             
+           stmt.execute();
+           stmt.close();
+
+            
+        } catch (SQLException e) {            
+            throw new RuntimeException(e);
+        }
+    }
 }
