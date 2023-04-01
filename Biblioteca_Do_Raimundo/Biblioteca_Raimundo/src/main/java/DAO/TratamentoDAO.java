@@ -198,6 +198,45 @@ public class TratamentoDAO {
             throw new RuntimeException(e);
         }
             
-        }
+    }
+           public void UpdateFuncionarioDAO( String funcionario, String cargo, String turno, String contato, int id) {
+           String sql = "UPDATE tabelaFuncionarios set funcionariosF =?, cargoF = ?, turnoF = ?, contatoF = ? WHERE idF = ? ;";    
 
+            try {
+                pstm = conn.prepareStatement(sql);
+
+                pstm.setString(1,funcionario ); //1 -> =?
+                pstm.setString(2,cargo ); //2 -> =?
+                pstm.setString(3,turno ); //3 -> =?
+                pstm.setString(4,contato ); //4 -> =?
+                pstm.setInt(5,id ); //5 -> =?
+
+                pstm.execute();
+                pstm.close();
+                
+              JOptionPane.showMessageDialog(null, "Alterado com sucesso!");  
+            } catch (SQLException erro) {
+                JOptionPane.showMessageDialog(null, "UpdateFuncionarioDAO: " + erro);
+            }
+        
+    }
+
+    public void DeleteFuncionarioDAO(int id) {
+        try {
+            String sql = "DELETE FROM tabelaFuncionarios WHERE idF = ?";
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);                    
+
+
+           stmt.setInt(1, id);            
+   
+             
+           stmt.execute();
+           stmt.close();
+
+            
+        } catch (SQLException e) {            
+            throw new RuntimeException(e);
+        }
+    }
 }
