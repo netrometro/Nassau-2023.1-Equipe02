@@ -114,7 +114,7 @@ public class TratamentoDAO {
         }
     }
         
-        public void InsertFucionarioBd(String funcionario, String cargo, String turno, String contato) {
+        public void InsertFuncionarioBd(String funcionario, String cargo, String turno, String contato) {
         try {
             
             String sql = "INSERT INTO tabelaFuncionarios(funcionarioF, cargoF, turnoF, contatoF) VALUES(?,?,?,?)";
