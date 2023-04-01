@@ -5,7 +5,6 @@
 package DAO;
 
 import DTO.LivroDTO;
-
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -135,6 +134,7 @@ public class TratamentoDAO {
         
     }
 
+
     public void DeleteAutorBd(int idA) {
         try {
             String sql = "DELETE FROM tabelaAutores WHERE idA = ?";
@@ -154,7 +154,9 @@ public class TratamentoDAO {
         }
     }
 
-        public void InsertAluguelLivroBd(String nome, int id) {
+
+        public void InsertAlugarLivroBd(String nome, int id) {
+
         try {
             
             String sql = "INSERT INTO tabelaAluguelLivros(idAL, nomeAL,dataAL) VALUES(?,?,?)";
@@ -200,4 +202,75 @@ public class TratamentoDAO {
             
         }
 
-}
+         public void DeleteAlugarLivroBd(int idLivro,String data) {
+		
+        try {
+            String sql = "DELETE FROM tabelaAluguelLivros WHERE idAL = ? AND dataAL = ?";
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);                    
+
+
+
+           stmt.setInt(1, idLivro);    
+           stmt.setString(2, data);
+   
+            
+ 
+           stmt.execute();
+           stmt.close();
+
+            
+        } catch (SQLException e) {            
+            throw new RuntimeException(e);
+        } }
+        
+         public void UpdateDevolverLivroBd(int id){
+             
+             int quantidade = SelectQuantidade(id);
+             System.out.println(quantidade);
+             try {
+            
+            String sql = "UPDATE tabelaLivros set quantidadeL = ? WHERE idL = ? ;";
+
+            pstm = conn.prepareStatement(sql);
+
+            
+            pstm.setInt(1,quantidade);
+            pstm.setInt(2, id);
+            
+            pstm.execute();
+            pstm.close();
+
+            
+            
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        }
+            
+        public int SelectQuantidade(int id){
+            int quantidade =0;
+           
+              String sql = "SELECT quantidadeL FROM tabelaLivros WHERE idL = ?";
+        try {
+            pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, id);
+            ResultSet executarQuery = pstm.executeQuery();
+          
+         
+              
+                
+                quantidade = executarQuery.getInt("quantidadeL");
+            pstm.execute();
+            pstm.close();
+         
+               
+        } catch (SQLException sqlex) {
+        
+        }
+            
+             return quantidade+1;
+        }
+            
+        }
+
