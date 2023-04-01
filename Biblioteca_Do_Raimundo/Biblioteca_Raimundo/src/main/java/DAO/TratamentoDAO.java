@@ -113,6 +113,30 @@ public class TratamentoDAO {
             throw new RuntimeException(e);
         }
     }
+        
+        public void InsertFucionarioBd(String funcionario, String cargo, String turno, String contato) {
+        try {
+            
+            String sql = "INSERT INTO tabelaFuncionarios(funcionarioF, cargoF, turnoF, contatoF) VALUES(?,?,?,?)";
+
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setString(1, funcionario);
+            pstm.setString(2,cargo);
+            pstm.setString(3, turno);
+            pstm.setString(4,contato);
+            
+            
+            pstm.execute();
+            pstm.close();
+
+            System.out.println("Gravado!");
+            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+            
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
        
         public void UpdateAutorBd( String autor, String best, int numero,int id) {
            String sql = "UPDATE tabelaAutores set autorA =?, bestA = ?, nlivroA = ? WHERE idA = ? ;";    

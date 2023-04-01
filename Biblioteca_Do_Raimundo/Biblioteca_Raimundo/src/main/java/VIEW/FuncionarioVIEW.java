@@ -154,7 +154,6 @@ public class FuncionarioVIEW extends javax.swing.JFrame {
         jLabel7.setText("Contato:");
 
         btnCadastrarVIEW.setText("CADASTRAR");
-        btnCadastrarVIEW.setEnabled(false);
         btnCadastrarVIEW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarVIEWActionPerformed(evt);
@@ -307,6 +306,18 @@ public class FuncionarioVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarVIEWActionPerformed
+          if (!txtFuncionarioVIEW.getText().trim().isEmpty() && !txtCargoVIEW.getText().trim().isEmpty() && !txtTurnoVIEW.getText().trim().isEmpty() && !txtContatoVIEW.getText().trim().isEmpty()) {
+            
+            bd.InsertFuncionarioBd(txtFuncionarioVIEW.getText().toString(), txtCargoVIEW.getText().toString(),txtTurnoVIEW.getText().toString(), txtContatoVIEW.getText().toString(),);
+
+            readDatabase();
+            limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os Campos!");
+
+        }
+
+    }                                                
 
     }//GEN-LAST:event_btnCadastrarVIEWActionPerformed
 
