@@ -6,7 +6,11 @@ import VIEW.DashBoardVIEW;
 import DAO.*;
 
 import java.sql.*;
+<<<<<<< HEAD
 import javax.swing.JOptionPane;
+=======
+import javax.swing.*;
+>>>>>>> main
 import javax.swing.table.DefaultTableModel;
 
 public class FuncionarioVIEW extends javax.swing.JFrame {
@@ -20,6 +24,30 @@ public class FuncionarioVIEW extends javax.swing.JFrame {
 
     TratamentoDAO bd = new TratamentoDAO();
 
+    
+    public void readDatabase() {
+        Connection conn;
+        PreparedStatement pstm;
+        conn = new ConexaoDAO().ConectaBD();
+        String sql = "SELECT * FROM tabelaFuncionarios";
+        try {
+            pstm = conn.prepareStatement(sql);
+            ResultSet executarQuery = pstm.executeQuery();
+            DefaultTableModel funcionarioViewTable = (DefaultTableModel) tabelaFuncionarioVIEW.getModel();
+            funcionarioViewTable.setNumRows(0);
+            while (executarQuery.next()) {
+                funcionarioViewTable.addRow(new Object[]{
+                    executarQuery.getString("idF"),
+                    executarQuery.getString("funcionariosF"),
+                    executarQuery.getString("cargoF"),
+                    executarQuery.getString("turnoF"),
+                    executarQuery.getString("contatoF"),});
+            }
+
+        } catch (SQLException sqlex) {
+            JOptionPane.showMessageDialog(null, "FuncionarioVIEW: " + sqlex);
+        }
+    }
     /**
      * Creates new form frmConsultaVIEW
      */
@@ -168,7 +196,6 @@ public class FuncionarioVIEW extends javax.swing.JFrame {
         });
 
         btnAlterarVIEW.setText("ALTERAR");
-        btnAlterarVIEW.setEnabled(false);
         btnAlterarVIEW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarVIEWActionPerformed(evt);
@@ -176,7 +203,6 @@ public class FuncionarioVIEW extends javax.swing.JFrame {
         });
 
         btnExcluirVIEW.setText("EXCLUIR");
-        btnExcluirVIEW.setEnabled(false);
         btnExcluirVIEW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirVIEWActionPerformed(evt);
@@ -184,7 +210,6 @@ public class FuncionarioVIEW extends javax.swing.JFrame {
         });
 
         btnAlterar.setText("SALVAR");
-        btnAlterar.setEnabled(false);
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarActionPerformed(evt);
@@ -320,11 +345,27 @@ public class FuncionarioVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrarVIEWActionPerformed
 
     private void btnAlterarVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarVIEWActionPerformed
-
+          if (tabelaFuncionarioVIEW.getSelectedRow() != -1) {
+            txtFuncionarioVIEW.setText((String) tabelaFuncionarioVIEW.getValueAt(tabelaFuncionarioVIEW.getSelectedRow(), 1));
+            txtCargoVIEW.setText((String) tabelaFuncionarioVIEW.getValueAt(tabelaFuncionarioVIEW.getSelectedRow(), 2));
+            txtTurnoVIEW.setText((String) tabelaFuncionarioVIEW.getValueAt(tabelaFuncionarioVIEW.getSelectedRow(), 3));
+            txtContatoVIEW.setText((String) tabelaFuncionarioVIEW.getValueAt(tabelaFuncionarioVIEW.getSelectedRow(), 4));
+        
+        }else{
+             JOptionPane.showMessageDialog(null, "Selecione um Funcionário da tabela!");
+         }
     }//GEN-LAST:event_btnAlterarVIEWActionPerformed
 
     private void btnExcluirVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirVIEWActionPerformed
+     if (tabelaFuncionarioVIEW.getSelectedRow() != -1) {
 
+            bd.DeleteFuncionarioDAO(Integer.valueOf(tabelaFuncionarioVIEW.getValueAt(tabelaFuncionarioVIEW.getSelectedRow(), 0).toString()));
+            readDatabase();
+ 
+        } else {
+            JOptionPane.showMessageDialog(null, "Escolha um funcionario para demitir!");
+
+        } 
     }//GEN-LAST:event_btnExcluirVIEWActionPerformed
 
     private void btnLimparVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparVIEWActionPerformed
@@ -332,7 +373,15 @@ public class FuncionarioVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparVIEWActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+         if (!txtFuncionarioVIEW.getText().trim().isEmpty() && !txtCargoVIEW.getText().trim().isEmpty() && !txtTurnoVIEW.getText().trim().isEmpty() && !txtContatoVIEW.getText().trim().isEmpty()) {
+            bd.UpdateFuncionarioDAO(txtFuncionarioVIEW.getText().toString(), txtCargoVIEW.getText().toString(), txtTurnoVIEW.getText().toString(),txtContatoVIEW.getText().toString()  ,Integer.valueOf(tabelaFuncionarioVIEW.getValueAt(tabelaFuncionarioVIEW.getSelectedRow(), 0).toString()));
+            
+         //   readDatabase();
+            limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os Campos!");
 
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnSairVIEW2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairVIEW2ActionPerformed

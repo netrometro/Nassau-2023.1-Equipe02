@@ -198,7 +198,6 @@ public class LivroVIEW extends javax.swing.JFrame {
         btnAlugadosVIEW.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAlugadosVIEW.setForeground(new java.awt.Color(255, 255, 255));
         btnAlugadosVIEW.setText("Alugados");
-        btnAlugadosVIEW.setEnabled(false);
         btnAlugadosVIEW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlugadosVIEWActionPerformed(evt);
@@ -299,6 +298,7 @@ public class LivroVIEW extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtQuantidadeVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeVIEWActionPerformed
@@ -379,7 +379,7 @@ public class LivroVIEW extends javax.swing.JFrame {
             
             Cadastrar.UpdateAlugarLivroBd( quantidade, id);
              
-            Cadastrar.InsertAluguelLivroBd(nome, id);
+            Cadastrar.InsertAlugarLivroBd(nome, id);
             
             
             
@@ -390,7 +390,9 @@ public class LivroVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_bntAlugarVIEWActionPerformed
 
     private void btnAlugadosVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlugadosVIEWActionPerformed
-       
+        this.dispose();
+        AlugadosVIEW tela = new AlugadosVIEW();
+        tela.setVisible(true);
     }//GEN-LAST:event_btnAlugadosVIEWActionPerformed
 
     /**
