@@ -112,6 +112,30 @@ public class TratamentoDAO {
             throw new RuntimeException(e);
         }
     }
+        
+        public void InsertFuncionarioBd(String funcionario, String cargo, String turno, String contato) {
+        try {
+            
+            String sql = "INSERT INTO tabelaFuncionarios(funcionariosF, cargoF, turnoF, contatoF) VALUES(?,?,?,?)";
+
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setString(1, funcionario);
+            pstm.setString(2,cargo);
+            pstm.setString(3, turno);
+            pstm.setString(4,contato);
+            
+            
+            pstm.execute();
+            pstm.close();
+
+            System.out.println("Gravado!");
+            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+            
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
        
         public void UpdateAutorBd( String autor, String best, int numero,int id) {
            String sql = "UPDATE tabelaAutores set autorA =?, bestA = ?, nlivroA = ? WHERE idA = ? ;";    
@@ -271,30 +295,26 @@ public class TratamentoDAO {
             
              return quantidade+1;
         }
-            
-        }
 
- public void UpdateFuncionarioDAO( String funcionario, String cargo, String turno, String contato, int id) {
-           String sql = "UPDATE tabelaFuncionarios set funcionariosF =?, cargoF = ?, turnoF = ?, contatoF = ? WHERE idF = ? ;";    
+    public void UpdateFuncionarioBd( String funcionario, String cargo, String turno, String contato, int id) {
+        String sql = "UPDATE tabelaFuncionarios set funcionariosF =?, cargoF =?, turnoF =?, contatoF =? WHERE idF = ? ;";    
 
+         try {
+             pstm = conn.prepareStatement(sql);
 
-            try {
-                pstm = conn.prepareStatement(sql);
+             pstm.setString(1,funcionario ); //1 -> =?
+             pstm.setString(2,cargo ); //2 -> =?
+             pstm.setString(3,turno ); //3 -> =?
+             pstm.setString(4,contato ); //4 -> =?
+             pstm.setInt(5,id ); //5 -> =?
 
-                pstm.setString(1,funcionario ); //1 -> =?
-                pstm.setString(2,cargo ); //2 -> =?
-                pstm.setString(3,turno ); //3 -> =?
-                pstm.setString(4,contato ); //4 -> =?
-                pstm.setInt(5,id ); //5 -> =?
+             pstm.execute();
+             pstm.close();
 
-                pstm.execute();
-                pstm.close();
-                
-              JOptionPane.showMessageDialog(null, "Alterado com sucesso!");  
-            } catch (SQLException erro) {
-                JOptionPane.showMessageDialog(null, "UpdateFuncionarioDAO: " + erro);
-            }
-        
+           JOptionPane.showMessageDialog(null, "Alterado com sucesso!");  
+         } catch (SQLException erro) {
+             JOptionPane.showMessageDialog(null, "UpdateFuncionarioBd: " + erro);
+         }
     }
 
     public void DeleteFuncionarioDAO(int id) {
@@ -311,3 +331,4 @@ public class TratamentoDAO {
             throw new RuntimeException(e);
         }
     }
+}

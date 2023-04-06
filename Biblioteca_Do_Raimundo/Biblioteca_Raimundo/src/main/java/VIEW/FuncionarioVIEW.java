@@ -6,7 +6,7 @@ import VIEW.DashBoardVIEW;
 import DAO.*;
 
 import java.sql.*;
-import javax.swing.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class FuncionarioVIEW extends javax.swing.JFrame {
@@ -19,31 +19,6 @@ public class FuncionarioVIEW extends javax.swing.JFrame {
     }
 
     TratamentoDAO bd = new TratamentoDAO();
-
-    
-    public void readDatabase() {
-        Connection conn;
-        PreparedStatement pstm;
-        conn = new ConexaoDAO().ConectaBD();
-        String sql = "SELECT * FROM tabelaFuncionarios";
-        try {
-            pstm = conn.prepareStatement(sql);
-            ResultSet executarQuery = pstm.executeQuery();
-            DefaultTableModel funcionarioViewTable = (DefaultTableModel) tabelaFuncionarioVIEW.getModel();
-            funcionarioViewTable.setNumRows(0);
-            while (executarQuery.next()) {
-                funcionarioViewTable.addRow(new Object[]{
-                    executarQuery.getString("idF"),
-                    executarQuery.getString("funcionariosF"),
-                    executarQuery.getString("cargoF"),
-                    executarQuery.getString("turnoF"),
-                    executarQuery.getString("contatoF"),});
-            }
-
-        } catch (SQLException sqlex) {
-            JOptionPane.showMessageDialog(null, "FuncionarioVIEW: " + sqlex);
-        }
-    }
     /**
      * Creates new form frmConsultaVIEW
      */
@@ -60,6 +35,29 @@ public class FuncionarioVIEW extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
+        public void readDatabase() {
+        Connection conn;
+        PreparedStatement pstm;
+        conn = new ConexaoDAO().ConectaBD();
+        String sql = "SELECT * FROM tabelaFuncionarios";
+        try {
+            pstm = conn.prepareStatement(sql);
+            ResultSet executarQuery = pstm.executeQuery();
+            DefaultTableModel autorViewTable = (DefaultTableModel) tabelaFuncionarioVIEW.getModel();
+            autorViewTable.setNumRows(0);
+            while (executarQuery.next()) {
+                autorViewTable.addRow(new Object[]{
+                    executarQuery.getString("idF"),
+                    executarQuery.getString("funcionariosF"),
+                    executarQuery.getString("cargoF"),
+                    executarQuery.getString("turnoF"),
+                    executarQuery.getString("contatoF"),});
+            }
+
+        } catch (SQLException sqlex) {
+            JOptionPane.showMessageDialog(null, "FuncionarioVIEW: " + sqlex);
+        }
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -155,7 +153,6 @@ public class FuncionarioVIEW extends javax.swing.JFrame {
         jLabel7.setText("Contato:");
 
         btnCadastrarVIEW.setText("CADASTRAR");
-        btnCadastrarVIEW.setEnabled(false);
         btnCadastrarVIEW.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarVIEWActionPerformed(evt);
@@ -194,7 +191,6 @@ public class FuncionarioVIEW extends javax.swing.JFrame {
         btnSairVIEW2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSairVIEW2.setForeground(new java.awt.Color(255, 255, 255));
         btnSairVIEW2.setText("v o l t a");
-        btnSairVIEW2.setEnabled(false);
         btnSairVIEW2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairVIEW2ActionPerformed(evt);
@@ -305,6 +301,16 @@ public class FuncionarioVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarVIEWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarVIEWActionPerformed
+           if (!txtFuncionarioVIEW.getText().trim().isEmpty() && !txtCargoVIEW.getText().trim().isEmpty() && !txtTurnoVIEW.getText().trim().isEmpty() && !txtContatoVIEW.getText().trim().isEmpty()) {
+            
+            bd.InsertFuncionarioBd(txtFuncionarioVIEW.getText().toString(), txtCargoVIEW.getText().toString(),txtTurnoVIEW.getText().toString(), txtContatoVIEW.getText().toString());
+            
+            readDatabase();
+            limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os Campos!");
+    }
+                           
 
     }//GEN-LAST:event_btnCadastrarVIEWActionPerformed
 
@@ -338,10 +344,11 @@ public class FuncionarioVIEW extends javax.swing.JFrame {
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
          if (!txtFuncionarioVIEW.getText().trim().isEmpty() && !txtCargoVIEW.getText().trim().isEmpty() && !txtTurnoVIEW.getText().trim().isEmpty() && !txtContatoVIEW.getText().trim().isEmpty()) {
-            bd.UpdateFuncionarioDAO(txtFuncionarioVIEW.getText().toString(), txtCargoVIEW.getText().toString(), txtTurnoVIEW.getText().toString(),txtContatoVIEW.getText().toString()  ,Integer.valueOf(tabelaFuncionarioVIEW.getValueAt(tabelaFuncionarioVIEW.getSelectedRow(), 0).toString()));
+            bd.UpdateFuncionarioBd(txtFuncionarioVIEW.getText().toString(), txtCargoVIEW.getText().toString(), txtTurnoVIEW.getText().toString(),txtContatoVIEW.getText().toString()  ,Integer.valueOf(tabelaFuncionarioVIEW.getValueAt(tabelaFuncionarioVIEW.getSelectedRow(), 0).toString()));
             
          //   readDatabase();
             limparCampos();
+            readDatabase();
         } else {
             JOptionPane.showMessageDialog(null, "Preencha todos os Campos!");
 
